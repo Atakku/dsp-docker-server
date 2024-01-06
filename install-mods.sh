@@ -5,7 +5,7 @@ set -e
 # Installation Script
 # Modified from https://raw.githubusercontent.com/AlienXAXS/DSPNebulaDocker/main/scripts/Install%20Script.sh
 
-BEPINEX_PLUGINS=("nebula/NebulaMultiplayerMod" "nebula/NebulaMultiplayerModApi" "PhantomGamers/IlLine" "CommonAPI/CommonAPI" "starfi5h/BulletTime" "xiaoye97/LDBTool" "CommonAPI/DSPModSave")
+BEPINEX_PLUGINS=("nebula/NebulaMultiplayerMod/0.8.14" "nebula/NebulaMultiplayerModApi/1.3.1" "PhantomGamers/IlLine/1.0.0" "CommonAPI/CommonAPI/1.5.7" "starfi5h/BulletTime/1.2.14" "xiaoye97/LDBTool/2.0.6" "CommonAPI/DSPModSave/1.1.4")
 
 if [[ ! -z "$ADDITIONAL_PLUGINS" ]]
 then
@@ -44,9 +44,9 @@ cd $HOME/temp
 
 for i in ${BEPINEX_PLUGINS[@]}; do
     TS_ASSET=$(curl --silent "https://dsp.thunderstore.io/api/experimental/package/$i/")
-    TS_ASSET_VERSION=$(echo $TS_ASSET | jq .latest.version_number | sed 's/"//g')
+    TS_ASSET_VERSION=$(echo $TS_ASSET | jq .version_number | sed 's/"//g')
     TS_ASSET_NAME=$(echo $TS_ASSET | jq .name | sed 's/"//g')
-    TS_DL_URL=$(echo $TS_ASSET | jq .latest.download_url | sed 's/"//g')
+    TS_DL_URL=$(echo $TS_ASSET | jq .download_url | sed 's/"//g')
     echo "## Attempting to download $TS_ASSET_NAME v$TS_ASSET_VERSION from Thunderstore.io"
     curl -L $TS_DL_URL --output "$TS_ASSET_NAME.zip" 2> /dev/null
     
