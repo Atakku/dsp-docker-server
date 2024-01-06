@@ -27,7 +27,7 @@ then
 fi
 
 ## install game using steamcmd
-steamcmd +force_install_dir $DSP_INSTALL_PATH +login $1 $2 $3 +@sSteamCmdForcePlatformType windows +app_update 1366540 validate +quit
+steamcmd +force_install_dir $DSP_INSTALL_PATH +login $1 $2 $3 +@sSteamCmdForcePlatformType windows +app_update 1366540 -beta 0.9.x validate +quit
 
 ## Install Goldberg Steam Emu
 echo "## Installing Goldberg Steam Emu"
